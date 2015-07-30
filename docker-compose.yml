@@ -14,8 +14,10 @@ kafka:
     #build: .
     environment:
     - DC_NAME=dc1
+    - FORWARD_TO_KAFKA=true
     links:
     - consul:consul
     ports:
     - 2181:2181
+    privileged: true
 
