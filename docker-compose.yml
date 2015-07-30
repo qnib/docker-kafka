@@ -15,6 +15,9 @@ kafka:
     environment:
     - DC_NAME=dc1
     - FORWARD_TO_KAFKA=true
+    - FORWARD_TO_FILE=true
+    volumes:
+    - /var/log/
     links:
     - consul:consul
     ports:
