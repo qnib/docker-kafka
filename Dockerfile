@@ -1,4 +1,4 @@
-### HBase Image
+### Docker Image
 FROM qnib/zookeeper
 
 ENV KAFKA_VER 0.8.2.1 
