@@ -25,6 +25,14 @@ Et voila, the consumer prints the very same messages... :)
 Test
 Hello World
 ```
+### Syslog
+Rsyslog is forwarding it's messages as well, therefore you could just submit a log via `logger`.
+```
+[root@kafka /]# logger Test123
+[root@kafka /]#  /opt/kafka/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic syslog --from-begin
+*snip*
+2015-07-30T17:52:22.716437+02:00 kafka logger: Test123
+```
 
 ## Kafka syslog-ng
 
