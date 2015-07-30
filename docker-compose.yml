@@ -1,0 +1,21 @@
+consul:
+    hostname: consul
+    image: qnib/consul
+    environment:
+    - DC_NAME=dc1
+    ports:
+    - "8500:8500"
+    dns: 127.0.0.1
+
+kafka:
+    hostname: kafka
+    dns: 127.0.0.1
+    image: qnib/kafka
+    #build: .
+    environment:
+    - DC_NAME=dc1
+    links:
+    - consul:consul
+    ports:
+    - 2181:2181
+
