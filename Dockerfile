@@ -8,3 +8,4 @@ ADD etc/supervisord.d/kafka.ini /etc/supervisord.d/
 ADD opt/kafka/config/server.properties /opt/kafka/config/
 ADD opt/qnib/kafka/bin/check_kafka.sh /opt/qnib/kafka/bin/
 ADD etc/consul.d/check_kafka.json /etc/consul.d/
+RUN echo "/opt/kafka/bin/kafka-console-consumer.sh --zookeeper localhost:2181 --topic syslog" >> /root/.bash_history
