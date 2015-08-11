@@ -7,20 +7,30 @@ consul:
     - "8500:8500"
     dns: 127.0.0.1
 
+zkui:
+    hostname: zkui
+    dns: 127.0.0.1
+    image: qnib/zkui
+    environment:
+    - DC_NAME=dc1
+    links:
+    - consul:consul
+    ports:
+    - 9090:9090
+    privileged: true
+
 kafka:
     hostname: kafka
     dns: 127.0.0.1
     image: qnib/kafka
-    #build: .
     environment:
     - DC_NAME=dc1
     - FORWARD_TO_KAFKA=true
     - FORWARD_TO_FILE=true
+    - START_ZOOKEEPER=true
     volumes:
     - /var/log/
     links:
     - consul:consul
-    ports:
-    - 2181:2181
     privileged: true
 
