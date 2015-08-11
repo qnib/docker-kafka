@@ -10,6 +10,9 @@ consul:
 zkui:
     hostname: zkui
     dns: 127.0.0.1
+    dns_search:
+    - node.consul
+    - service.consul
     image: qnib/zkui
     environment:
     - DC_NAME=dc1
@@ -22,6 +25,9 @@ zkui:
 zookeeper:
     hostname: zookeeper
     dns: 127.0.0.1
+    dns_search:
+    - node.consul
+    - service.consul
     image: qnib/zookeeper
     environment:
     - DC_NAME=dc1
@@ -32,6 +38,9 @@ zookeeper:
 kafka0:
     hostname: kafka0
     dns: 127.0.0.1
+    dns_search:
+    - node.consul
+    - service.consul
     image: qnib/kafka
     environment:
     - DC_NAME=dc1
@@ -41,14 +50,17 @@ kafka0:
     - zookeeper:zookeeper
     privileged: true
 
-#kafka1:
-#    hostname: kafka1
-#    dns: 127.0.0.1
-#    image: qnib/kafka
-#    environment:
-#    - DC_NAME=dc1
-#    - FORWARD_TO_KAFKA=true
-#    links:
-#    - consul:consul
-#    - zookeeper:zookeeper
-#    privileged: true
+kafka1:
+    hostname: kafka1
+    dns: 127.0.0.1
+    dns_search:
+    - node.consul
+    - service.consul
+    image: qnib/kafka
+    environment:
+    - DC_NAME=dc1
+    - FORWARD_TO_KAFKA=true
+    links:
+    - consul:consul
+    - zookeeper:zookeeper
+    privileged: true
