@@ -41,14 +41,14 @@ kafka0:
     - zookeeper:zookeeper
     privileged: true
 
-kafka1:
-    hostname: kafka1
-    dns: 127.0.0.1
-    image: qnib/kafka
-    environment:
-    - DC_NAME=dc1
-    - FORWARD_TO_KAFKA=true
-    links:
-    - consul:consul
-    - zookeeper:zookeeper
-    privileged: true
+#kafka1:
+#    hostname: kafka1
+#    dns: 127.0.0.1
+#    image: qnib/kafka
+#    environment:
+#    - DC_NAME=dc1
+#    - FORWARD_TO_KAFKA=true
+#    links:
+#    - consul:consul
+#    - zookeeper:zookeeper
+#    privileged: true
