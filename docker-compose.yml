@@ -19,18 +19,36 @@ zkui:
     - 9090:9090
     privileged: true
 
-kafka:
-    hostname: kafka
+zookeeper:
+    hostname: zookeeper
+    dns: 127.0.0.1
+    image: qnib/zookeeper
+    environment:
+    - DC_NAME=dc1
+    links:
+    - consul:consul
+    privileged: true
+
+kafka0:
+    hostname: kafka0
     dns: 127.0.0.1
     image: qnib/kafka
     environment:
     - DC_NAME=dc1
     - FORWARD_TO_KAFKA=true
-    - FORWARD_TO_FILE=true
-    - START_ZOOKEEPER=true
-    volumes:
-    - /var/log/
     links:
     - consul:consul
+    - zookeeper:zookeeper
     privileged: true
 
+kafka1:
+    hostname: kafka1
+    dns: 127.0.0.1
+    image: qnib/kafka
+    environment:
+    - DC_NAME=dc1
+    - FORWARD_TO_KAFKA=true
+    links:
+    - consul:consul
+    - zookeeper:zookeeper
+    privileged: true

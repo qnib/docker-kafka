@@ -17,7 +17,8 @@
 ############################# Server Basics #############################
 
 # The id of the broker. This must be set to a unique integer for each broker.
-broker.id=0
+{{$host := env "HOSTNAME"}}
+broker.id={{if $host | regexMatch "kafka([0-9]+)" }}{{env "HOSTNAME" | replaceAll "kafka" ""}}{{else}}0{{end}}
 
 ############################# Socket Server Settings #############################
 
