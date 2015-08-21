@@ -10,3 +10,4 @@ ADD opt/qnib/kafka/bin/*.sh /opt/qnib/kafka/bin/
 ADD etc/consul.d/kafka.json /etc/consul.d/
 ADD etc/consul-templates/kafka.server.properties.ctmpl /etc/consul-templates/
 RUN echo "/opt/kafka/bin/kafka-console-consumer.sh --zookeeper leader.zookeeper.service.consul:2181 --topic syslog" >> /root/.bash_history
+RUN yum install -y jq
