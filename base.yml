@@ -1,0 +1,10 @@
+kafka:
+    dns: 127.0.0.1
+    dns_search:
+    - node.consul
+    - service.consul
+    image: qnib/kafka:0.8.1.1
+    environment:
+    - DC_NAME=dc1
+    - FORWARD_TO_KAFKA=true
+    privileged: true
