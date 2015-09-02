@@ -8,7 +8,7 @@ fi
 if [ "X${KAFKA_HOST}" == "X" ];then
     export KAFKA_HOST=$(curl -s -XGET "172.17.42.1:8500/v1/catalog/service/zookeeper?dc=dc1&tag=${ZOOKEEPER_ENV_MYID}"|jq ".[0].Node"|sed -e 's/"//g')
 fi
-if [ "KAFKA_HOST" == "null" ];then
+if [ "${KAFKA_HOST}" == "null" ];then
     export KAFKA_HOST=$(hostname -f)
 fi
 
