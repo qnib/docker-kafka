@@ -18,3 +18,4 @@ RUN echo "/opt/kafka/bin/kafka-console-consumer.sh --zookeeper zookeeper.service
 
 ## Temporarily until moved to qnib/consul
 ADD opt/qnib/consul/etc/bash_functions /opt/qnib/consul/etc/
+ADD opt/qnib/kafka/bin/show_topics.py /opt/qnib/kafka/bin/
