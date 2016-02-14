@@ -3,6 +3,8 @@ consul:
     image: qnib/consul
     environment:
     - DC_NAME=dc1
+    - RUN_SERVER=true
+    - BOOTSTRAP_CONSUL=true
     ports:
     - "8500:8500"
     dns: 127.0.0.1
@@ -53,19 +55,22 @@ kafkaMonitor:
     privileged: true
 
 kafkaMgr:
-    image: sheepkiller/kafka-manager
+    image: qnib/kafka-manager
+    hostname: kafka-manager
+    dns: 127.0.0.1
+    dns_search:
+    - node.consul
+    - service.consul
     environment:
-    - ZK_HOSTS="172.17.0.65:2181"
-    - APPLICATION_SECRET=letmein 
-    extra_hosts:
-    - kafka0:172.17.0.121
-    - kafka1:172.17.0.120
-    - kafka2:172.17.0.122
+    - APPLICATION_SECRET=letmein
     ports:
     - 9000:9000
     volumes:
     - ./conf/:/kafka-manager-1.2.7/conf/
-    
+    links:
+    - consul:consul
+    - zookeeper:zookeeper
+
 kafka0:
     extends:
       file: base.yml

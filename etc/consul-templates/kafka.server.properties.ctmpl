@@ -116,7 +116,7 @@ log.cleaner.enable=false
 # server. e.g. "127.0.0.1:3000,127.0.0.1:3001,127.0.0.1:3002".
 # You can also append an optional chroot string to the urls to specify the
 # root directory for all kafka znodes.
-zookeeper.connect={{range $i, $e := service "zookeeper@dc1" "passing"}}{{if ne $i 0}},{{end}}{{$e.Address}}:{{$e.Port}}{{end}}
+zookeeper.connect={{range $i, $e := service "zookeeper" "any"}}{{if ne $i 0}},{{end}}{{$e.Address}}:{{$e.Port}}{{end}}
 
 # Timeout in ms for connecting to zookeeper
 zookeeper.connection.timeout.ms=6000
