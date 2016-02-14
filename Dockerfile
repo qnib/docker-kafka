@@ -1,5 +1,5 @@
 ### Docker Image
-FROM qnib/jmxtrans7
+FROM qnib/jmxtrans8
 
 ENV KAFKA_VER 0.8.2.1 
 ENV API_VER 2.11
