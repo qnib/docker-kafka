@@ -1,23 +1,23 @@
 consul:
-    hostname: consul
     image: qnib/consul
+    hostname: consul
+    container_name: consul
+    extends:
+      file: base.yml
+      service: base
     environment:
-    - DC_NAME=dc1
     - RUN_SERVER=true
     - BOOTSTRAP_CONSUL=true
     ports:
     - "8500:8500"
-    dns: 127.0.0.1
 
 zkui:
-    hostname: zkui
-    dns: 127.0.0.1
-    dns_search:
-    - node.consul
-    - service.consul
     image: qnib/zkui
-    environment:
-    - DC_NAME=dc1
+    hostname: zkui
+    container_name: zkui
+    extends:
+      file: base.yml
+      service: base
     links:
     - consul:consul
     ports:
@@ -25,14 +25,12 @@ zkui:
     privileged: true
 
 zookeeper:
-    hostname: zookeeper
-    dns: 127.0.0.1
-    dns_search:
-    - node.consul
-    - service.consul
     image: qnib/zookeeper
-    environment:
-    - DC_NAME=dc1
+    hostname: zookeeper
+    container_name: zookeeper
+    extends:
+      file: base.yml
+      service: base
     links:
     - consul:consul
     privileged: true
@@ -40,12 +38,11 @@ zookeeper:
 kafkaMonitor:
     image: qnib/kafka-monitor
     hostname: kafka-monitor
-    dns: 127.0.0.1
-    dns_search:
-    - node.consul
-    - service.consul
+    container_name: kafka-monitor
+    extends:
+      file: base.yml
+      service: base
     environment:
-    - DC_NAME=dc1
     - FORWARD_TO_KAFKA=true
     links:
     - consul:consul
@@ -57,10 +54,10 @@ kafkaMonitor:
 kafkaMgr:
     image: qnib/kafka-manager
     hostname: kafka-manager
-    dns: 127.0.0.1
-    dns_search:
-    - node.consul
-    - service.consul
+    container_name: kafka-manager
+    extends:
+      file: base.yml
+      service: base
     environment:
     - APPLICATION_SECRET=letmein
     ports:
