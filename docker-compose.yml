@@ -34,6 +34,8 @@ zookeeper:
     links:
     - consul:consul
     privileged: true
+    ports:
+    - 2181:2181
 
 kafkaMonitor:
     image: qnib/kafka-monitor
