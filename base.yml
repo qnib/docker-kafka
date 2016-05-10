@@ -3,7 +3,7 @@ kafka:
     dns_search:
     - node.consul
     - service.consul
-    image: qnib/kafka:latest
+    image: qnib/kafka:0.9.0.1
     environment:
     - DC_NAME=dc1
     - FORWARD_TO_KAFKA=true
