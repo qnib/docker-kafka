@@ -71,34 +71,40 @@ kafkaMgr:
     - zookeeper:zookeeper
 
 kafka0:
+    hostname: kafka0
+    container_name: kafka0
     extends:
       file: base.yml
       service: kafka
-    hostname: kafka0
     environment:
     - BARE_HOST=kafka0
+    - KAFKA_PORT=9092
     links:
     - consul:consul
     - zookeeper:zookeeper
 
 kafka1:
+    hostname: kafka1
+    container_name: kafka1
     extends:
       file: base.yml
       service: kafka
     environment:
     - BARE_HOST=kafka1
-    hostname: kafka1
+    - KAFKA_PORT=9192
     links:
     - consul:consul
     - zookeeper:zookeeper
 
 kafka2:
+    hostname: kafka2
+    container_name: kafka2
     extends:
       file: base.yml
       service: kafka
-    hostname: kafka2
     environment:
     - BARE_HOST=kafka2
+    - KAFKA_PORT=9292
     links:
     - consul:consul
     - zookeeper:zookeeper
