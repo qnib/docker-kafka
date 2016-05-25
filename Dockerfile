@@ -1,7 +1,7 @@
 ### Docker Image
 FROM qnib/jmxtrans8
 
-ENV KAFKA_VER 0.9.0.1
+ENV KAFKA_VER 0.10.0.0
 ENV API_VER 2.11
 RUN curl -fLs http://apache.mirrors.pair.com/kafka/${KAFKA_VER}/kafka_${API_VER}-${KAFKA_VER}.tgz | tar xzf - -C /opt \
  && mv /opt/kafka_${API_VER}-${KAFKA_VER} /opt/kafka/ \

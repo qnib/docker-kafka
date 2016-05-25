@@ -8,7 +8,7 @@ base:
      - DC_NAME=dc1
 
 kafka:
-    image: qnib/kafka:0.9.0.1
+    image: qnib/kafka:0.10.0.0
     extends:
       file: base.yml
       service: base
