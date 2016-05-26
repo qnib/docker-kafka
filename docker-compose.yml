@@ -79,6 +79,8 @@ kafka0:
     environment:
     - BARE_HOST=kafka0
     - KAFKA_PORT=9092
+    ports:
+     - 9092:9092
     links:
     - consul:consul
     - zookeeper:zookeeper
@@ -92,6 +94,8 @@ kafka1:
     environment:
     - BARE_HOST=kafka1
     - KAFKA_PORT=9192
+    ports:
+     - 9192:9192
     links:
     - consul:consul
     - zookeeper:zookeeper
@@ -105,6 +109,8 @@ kafka2:
     environment:
     - BARE_HOST=kafka2
     - KAFKA_PORT=9292
+    ports:
+     - 9292:9292
     links:
     - consul:consul
     - zookeeper:zookeeper
