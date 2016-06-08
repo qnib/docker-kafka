@@ -18,8 +18,6 @@ function get_brokerid {
   echo ${BROKER_ID}
 }
 
-function
-
 sleep 5
 
 if [ "X${ZK_DC}" != "X" ];then
