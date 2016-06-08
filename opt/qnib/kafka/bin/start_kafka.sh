@@ -20,15 +20,7 @@ function get_brokerid {
 
 sleep 5
 
-if [ "X${ZK_DC}" != "X" ];then
-    sed -i'' -E "s#service \"zookeeper(@\w+)?\"#service \"zookeeper@${ZK_DC}\"#" /etc/consul-templates/kafka.server.properties.ctmpl
-fi
-if [ "X${KAFKA_HOST}" == "X" ];then
-    export KAFKA_HOST=$(curl -s -XGET "172.17.42.1:8500/v1/catalog/service/zookeeper?dc=dc1&tag=${ZOOKEEPER_ENV_MYID}"|jq ".[0].Node"|sed -e 's/"//g')
-fi
-if [ "${KAFKA_HOST}" == "null" ];then
-    export KAFKA_HOST=$(hostname -f)
-fi
+export KAFKA_HOST=$(hostname -f)
 
 ## Get the BROKER_ID
 export BROKER_ID=get_brokerid()
