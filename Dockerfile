@@ -21,3 +21,7 @@ RUN echo "/opt/kafka/bin/kafka-console-consumer.sh --zookeeper zookeeper.service
 ## Temporarily until moved to qnib/consul
 ADD opt/qnib/consul/etc/bash_functions /opt/qnib/consul/etc/
 ADD opt/qnib/kafka/bin/show_topics.py /opt/qnib/kafka/bin/
+
+### move to consul
+RUN wget -qO /usr/local/bin/consul-cli https://github.com/CiscoCloud/consul-cli/releases/download/v0.2.0/consul-cli_0.2.0_linux_amd64.tar.gz \
+ && chmod +x /usr/local/bin/consul-cli
