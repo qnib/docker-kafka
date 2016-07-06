@@ -13,6 +13,7 @@ ADD opt/qnib/kafka/bin/check_kafka.sh \
     opt/qnib/kafka/bin/show_group.sh \
     opt/qnib/kafka/bin/create_topics.sh \
     opt/qnib/kafka/bin/show_topics.py \
+    opt/qnib/kafka/bin/show_group.sh \
     opt/qnib/kafka/bin/start.sh \
     /opt/qnib/kafka/bin/
 ADD etc/consul.d/kafka.json /etc/consul.d/
