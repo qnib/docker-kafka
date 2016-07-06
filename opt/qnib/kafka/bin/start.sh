@@ -20,6 +20,9 @@ if [ -z ${BROKER_ID} ];then
   consul-cli kv unlock brokerid --session="${SESSION}"
 fi
 export BROKER_ID=${BROKER_ID}
+if [ -z ${KAFKA_GRAPHITE_METRICS_GROUP} ];then
+    export KAFKA_GRAPHITE_METRICS_GROUP=$(/opt/qnib/kafka/bin/config_group.sh)
+fi
 consul-template -consul localhost:8500 -once -template "/etc/consul-templates/kafka.server.properties.ctmpl:/opt/kafka/config/server.properties"
 
 JMXD="-Dcom.sun.management.jmxremote"
