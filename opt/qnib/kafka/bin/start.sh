@@ -21,7 +21,7 @@ if [ -z ${BROKER_ID} ];then
 fi
 export BROKER_ID=${BROKER_ID}
 if [ -n ${KAFKA_GRAPHITE_METRICS_GROUP} ];then
-    export KAFKA_GRAPHITE_METRICS_GROUP=$(/opt/qnib/kafka/bin/config_group.sh)
+    export KAFKA_GRAPHITE_METRICS_GROUP=$(/opt/qnib/kafka/bin/show_group.sh)
 fi
 consul-template -consul localhost:8500 -once -template "/etc/consul-templates/kafka.server.properties.ctmpl:/opt/kafka/config/server.properties"
 
