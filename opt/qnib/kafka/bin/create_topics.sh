@@ -27,4 +27,5 @@ function qnib_kafka_bootstrap_topics {
 qnib_wait_for_srv kafka ${KAFKA_MIN_INSTANCES-1}
 
 qnib_kafka_bootstrap_topics ${KAFKA_BOOTSTRAP_TOPICS}
+sleep 5
 exit 0
