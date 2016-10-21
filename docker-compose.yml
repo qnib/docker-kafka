@@ -99,18 +99,3 @@ kafka1:
     links:
     - consul:consul
     - zookeeper:zookeeper
-
-kafka2:
-    hostname: kafka2
-    container_name: kafka2
-    extends:
-      file: base.yml
-      service: kafka
-    environment:
-    - BARE_HOST=kafka2
-    - KAFKA_PORT=9292
-    ports:
-     - 9292:9292
-    links:
-    - consul:consul
-    - zookeeper:zookeeper
