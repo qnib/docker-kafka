@@ -1,17 +1,21 @@
-base:
-    dns: 
-     - 127.0.0.1
-    dns_search:
-     - node.consul
-     - service.consul
+version: '2'
+services:
+  base:
     environment:
-     - DC_NAME=dc1
+     - DC_NAME=kafka
+    networks:
+     - kafka-net
 
-kafka:
+  client:
+    extends:
+      service: base
+    environment:
+     - CONSUL_CLUSTER_IPS=consul
+
+  kafka:
     image: qnib/kafka:0.10.0.1
     extends:
-      file: base.yml
-      service: base
+      service: client
     environment:
      - FORWARD_TO_KAFKA=true
     privileged: true

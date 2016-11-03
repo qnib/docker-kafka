@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ZK_FQDN=${ZK_HOST:-leader.zookeeper.service.consul}
+ZK_FQDN=${ZK_HOST:-zookeeper}
 if [ "X${ZK_DC}" != "X" ];then
     ZK_FQDN=zookeeper.service.${ZK_DC}.consul
 fi
